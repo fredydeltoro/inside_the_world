@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+	<link rel="stylesheet" href="/css/ruta.css">
+{% endblock %}
+
+{% block content %}
+	<div class="world">
+       <div class="contenido">
+          <h2>World</h2>
+           <p>
+               Tengo lugares maravillosos, dejame contarte de ellos
+           </p>
+       </div>
+        <img src="/imagenes/globe1.svg" alt="world"> 
+    </div>
+    <div class="mapcanvas"></div>
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script  type="text/javascript" src="js/mapa.js"></script>
+{% endblock %}

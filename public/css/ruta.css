@@ -1,0 +1,50 @@
+.mapcanvas {
+  background: blanco;
+  border-radius: 10px;
+  height: 250px;
+  margin: 0 0 100px 25%;
+  opacity: 0.9;
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  width: 400px;
+}
+.world {
+  position: absolute;
+  left: 15%;
+  top: 30%;
+}
+.world img {
+  width: 40%;
+}
+.contenido {
+  background: #35618c;
+  border-radius: 25px;
+  opacity: 0.95;
+  padding: 1em;
+  position: absolute;
+  top: -70px;
+  width: 450px;
+}
+.contenido:before {
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #35618c;
+  content: "";
+  position: absolute;
+  top: 80px;
+  left: 150px;
+}
+.contenido h2 {
+  color: #fff;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.contenido p {
+  color: #fff;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}

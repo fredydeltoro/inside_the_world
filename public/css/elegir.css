@@ -1,0 +1,32 @@
+.tabla {
+  position: absolute;
+  left: 37%;
+  top: 20%;
+}
+.tabla p {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 800;
+  text-align: center;
+}
+.tabla table {
+  background: #fff;
+  border-collapse: separate;
+  border-color: #808080;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border-spacing: 2px;
+  font-size: 18px;
+  font-align: left;
+  padding: 15px;
+}
+.tabla table tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+.tabla table tbody tr td {
+  border-bottom: 1px solid #eee;
+  display: table-cell;
+  padding: 3px 15px;
+}
