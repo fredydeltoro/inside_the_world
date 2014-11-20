@@ -1,7 +1,14 @@
+@font-face {
+  font-family: 'iconitos';
+  src: url("../fonts/icomoon.eot?hqg4h2");
+  src: url("../fonts/icomoon.eot?#iefixhqg4h2") format('embedded-opentype'), url("/fonts/icomoon.woff?hqg4h2") format('woff'), url("../fonts/icomoon.ttf?hqg4h2") format('truetype'), url("../fonts/icomoon.svg?hqg4h2#icomoon") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 .tabla {
   position: absolute;
-  left: 37%;
-  top: 20%;
+  left: 38%;
+  top: 10%;
 }
 .tabla p {
   color: #fff;
@@ -26,7 +33,35 @@
   border-color: inherit;
 }
 .tabla table tbody tr td {
-  border-bottom: 1px solid #eee;
-  display: table-cell;
-  padding: 3px 15px;
+  position: relative;
+  width: 200px;
+  padding: 5px;
+}
+.tabla table tbody tr td a {
+  display: inline-block;
+}
+.tabla table tbody tr td a img {
+  float: left;
+  width: 32px;
+}
+.tabla table tbody tr td a p {
+  color: #000;
+  font-size: 20px;
+  float: right;
+  padding: 0;
+  position: absolute;
+  left: 40%;
+  top: -25%;
+}
+.tabla table tbody tr td a .flechita {
+  position: absolute;
+  left: 90%;
+  top: -25%;
+}
+.tabla table tbody tr td a .flechita:after {
+  color: #000;
+  font-family: "iconitos";
+  font-size: 22px;
+  content: "\e600";
+  vertical-align: bottom;
 }

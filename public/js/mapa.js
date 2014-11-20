@@ -1,12 +1,18 @@
+arrVariables = location.search.substring(1,location.search.length);
+arrVariableActual = arrVariables.split("=");
+
+var destino=unescape(arrVariableActual[1]);
+
+
 var map = null;
 var geocoder;
 var directionsService = null;
 var directionsDisplay = null;
 var infowindow = new google.maps.InfoWindow();
-
+var s = document.querySelector('.s');
 //revisar que el navegador soporta la localizacion
 $(document).ready(geo_support);
-
+s.innerHTML=cadVariables;
 function geo_support() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(initialize);
@@ -21,7 +27,7 @@ function geo_support() {
 
 function initialize(position) {
   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  var destino = 'Monterrey';
+
   var myOptions = {
     zoom: 15,
     center: latlng,
