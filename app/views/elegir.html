@@ -10,7 +10,7 @@
 	   	<div class='tabla'> 
             <p>Quiero ir a...</p>
 
-            <table>
+            <!--<table>
               <tbody>
                 <tr>
                   <td> <a href="javascript:pasarVariables('/ruta','Francia')"> <img src="/imagenes/france.png"> <p>Francia</p> <p class= 'flechita'></p></a> </td>
@@ -32,7 +32,13 @@
                  <td> <a href="javascript:pasarVariables('/ruta','Alemania')"> <img src="/imagenes/germany.png"> <p>Alemania</p> <p class= 'flechita'></p></a>  </td>
                 </tr>
               </tbody>
-            </table>
+            </table>-->
+
+            <ul>
+              {% for lugares in data%}
+                <li>{{lugares.nombre}}</li>
+              {% endfor %}
+            </ul>
 
         </div>
 

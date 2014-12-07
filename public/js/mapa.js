@@ -1,45 +1,35 @@
-arrVariables = location.search.substring(1,location.search.length);
-arrVariableActual = arrVariables.split("=");
+$( document ).ready(function() {
+  var queryString = new Array();
+  if (queryString.length == 0) {
+            if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+        }
+        if (queryString["latdes"] != null &&queryString["londes"] != null &&queryString["latori"] != null && queryString["lonori"] != null) {
+           var destino = new google.maps.LatLng(queryString["latdes"], queryString["londes"]);
+           var origen = new google.maps.LatLng(queryString["latori"], queryString["lonori"]);
+           var adddestino = queryString["arrivo"];
+           var addorigen = queryString["partida"];
+        }
 
-var destino=unescape(arrVariableActual[1]);
-
-
-var map = null;
-var geocoder;
-var directionsService = null;
-var directionsDisplay = null;
-var infowindow = new google.maps.InfoWindow();
-var s = document.querySelector('.s');
-//revisar que el navegador soporta la localizacion
-$(document).ready(geo_support);
-s.innerHTML=cadVariables;
-function geo_support() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(initialize);
-  }
-  else {
-    error('not supported');
-  }
-} 
-
-
-
-
-function initialize(position) {
-  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-  var myOptions = {
+var myOptions = {
     zoom: 15,
-    center: latlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    center: destino,
+    mapTypeId: 'roadmap'
   };
+
   map = new google.maps.Map($(".mapcanvas").get(0), myOptions);
-  geocoder = new google.maps.Geocoder();
-  directionsService = new google.maps.DirectionsService();
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  address(latlng);
-  ruta(latlng,destino);
-}
+
+  ruta(origen,destino)
+});
+
+var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsService = new google.maps.DirectionsService();
 
 function ruta_secundaria(from, to) {
   var flightPlanCoordinates = [from,to];
@@ -52,61 +42,18 @@ function ruta_secundaria(from, to) {
   });
 
   flightPath.setMap(map);
-}
+    var a = new google.maps.Marker({
+            position: from,
+                  map: map
+              });
 
-function geo_ubicacion(origen, destino) {
-
-  geocoder.geocode({ 'address': destino}, geocode_latlng);
-
-  function geocode_latlng(results, status) {
-
-    if (status == 'OK') {
-      var hola = results[0].geometry.location;
-      get_latlng(hola);
-    } 
-    else {
-      alert("Geocoding no tuvo éxito debido a: " + status);
-    }
-  }
-
-  function get_latlng (puto_numero) {
-    ruta_secundaria (origen, puto_numero);
-    var bounds = new google.maps.LatLngBounds(origen,puto_numero);
+    var b = new google.maps.Marker({
+      position: to,
+            map: map
+        });
+    var bounds = new google.maps.LatLngBounds(from, to);
     map.fitBounds(bounds);
-    address(puto_numero);
-  }
-}
-
-
-
-function address (latlng) {
-
-  var dir;
-
-  geocoder.geocode({'latLng': latlng}, geocode_address);
-
-  function geocode_address (results, status) {
-
-    if (status == 'OK') {
-
-      if (results[1]) {
-
-        marker = new google.maps.Marker({
-          position: latlng,
-                map: map,
-                title:results[1].formatted_address
-            });
-      }
-      else {
-        alert('No results found');
-      }
-    }
-    else {
-      alert('Geocoder failed due to: ' + status);
-    }
-  }
-}
-
+};
 
 function ruta (inicio,destino) {
 
@@ -126,8 +73,8 @@ function ruta (inicio,destino) {
       directionsDisplay.setDirections(response);
     }
     else {
-      var a = 'mark_a';
-      geo_ubicacion(inicio, destino);
+      ruta_secundaria(inicio, destino);
     }
   }
-}
+};
+

@@ -1,9 +1,26 @@
-arrVariables = location.search.substring(1,location.search.length);
-arrVariableActual = arrVariables.split("=");
 
-var destino=unescape(arrVariableActual[1]);
 
 $(document).ready(function(){
+    var queryString = new Array();
+  if (queryString.length == 0) {
+            if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+        }
+        if (queryString["latdes"] != null &&queryString["londes"] != null &&queryString["latori"] != null && queryString["lonori"] != null) {
+           var topic = queryString["arrivo"];
+           if (topic.split(',').length > 1) {
+            debugger;
+            var destino = topic.split(',')[0];
+           }
+           debugger;
+        }
+
     var title = document.querySelector('h2');
     function ellipsis_box(elemento, max_chars)
     {

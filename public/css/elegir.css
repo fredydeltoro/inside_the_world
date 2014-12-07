@@ -16,52 +16,20 @@
   font-weight: 800;
   text-align: center;
 }
-.tabla table {
+.tabla ul {
+  border-radius: 5px;
   background: #fff;
-  border-collapse: separate;
-  border-color: #808080;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  border-spacing: 2px;
+  color: #555;
   font-size: 18px;
-  font-align: left;
-  padding: 15px;
-}
-.tabla table tbody {
-  display: table-row-group;
-  vertical-align: middle;
-  border-color: inherit;
-}
-.tabla table tbody tr td {
-  position: relative;
-  width: 200px;
-  padding: 5px;
-}
-.tabla table tbody tr td a {
-  display: inline-block;
-}
-.tabla table tbody tr td a img {
-  float: left;
-  width: 32px;
-}
-.tabla table tbody tr td a p {
-  color: #000;
-  font-size: 20px;
-  float: right;
+  text-align: center;
+  height: 200px;
+  line-height: 30px;
+  margin: 0;
   padding: 0;
-  position: absolute;
-  left: 40%;
-  top: -25%;
+  overflow-y: auto;
+  white-space: nowrap;
+  width: 300px;
 }
-.tabla table tbody tr td a .flechita {
-  position: absolute;
-  left: 90%;
-  top: -25%;
-}
-.tabla table tbody tr td a .flechita:after {
-  color: #000;
-  font-family: "iconitos";
-  font-size: 22px;
-  content: "\e600";
-  vertical-align: bottom;
+.tabla ul li {
+  display: block;
 }

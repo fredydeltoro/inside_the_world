@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+	<link rel="stylesheet" href="/css/ir.css">
+{% endblock %}
+
+{% block content %}
+	<div>
+		<p class='lugar'></p>
+		<input id='origen' type="text" size='40' placeholder='Desde donde estas u otra ubicación'>
+		<input type="text" id="destino" size='40' placeholder='Hasta donde quieres ir'>
+		<a href="" class="ir">Vamos</a>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=es" ></script>
+	<script src='/js/ir_script.js'></script>
+{% endblock %}
+
+<!DOCTYPE html>

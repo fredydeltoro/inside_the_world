@@ -5,6 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "express": "^3.4.0",
+    "express-myconnection": "^1.0.4",
+    "mysql": "^2.5.3",
     "swig": "^1.4.2"
   },
   "devDependencies": {},

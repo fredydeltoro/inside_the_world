@@ -24,7 +24,7 @@ header {
   padding: 0;
 }
 header .titular {
-  margin: -19px 0 0 40%;
+  margin: -19px 0 0 0;
 }
 header .titular .titulo {
   color: #fff;
@@ -38,6 +38,7 @@ footer {
   opacity: 0.9;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
   filter: alpha(opacity=90);
+  text-align: center;
   overflow: hidden;
 }
 section {
@@ -54,9 +55,7 @@ section {
 footer {
   color: #fff;
   font-family: 'yanone';
-  color: rgba(255,255,255,0.5);
   padding: 1em 0;
-  text-align: center;
 }
 footer h3 {
   font-size: 18px;
@@ -64,8 +63,4 @@ footer h3 {
 }
 footer h3 strong {
   display: block;
-}
-footer h3 .mejor:before,
-footer h3 .mejor:after {
-  content: "-";
 }
