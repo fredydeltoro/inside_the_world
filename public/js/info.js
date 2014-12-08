@@ -16,12 +16,14 @@ $(document).ready(function(){
            var topic = queryString["arrivo"];
            if (topic.split(',').length > 1) {
             debugger;
-            var destino = topic.split(',')[0];
+            var destino = encodeURIComponent(topic.split(',')[0]);
            }
-           debugger;
+           else{
+            var destino = encodeURIComponent(queryString["arrivo"]);
+           }
         }
 
-    var title = document.querySelector('h2');
+
     function ellipsis_box(elemento, max_chars)
     {
         limite_text = $(elemento).text();
@@ -56,7 +58,7 @@ $(document).ready(function(){
             // remove cite error
             blurb.find('.mw-ext-cite-error').remove();
             $('p').html($(blurb).find('p'));
-            title.innerHTML = data.parse.title;
+            $('h2').text(data.parse.title);
             ellipsis_box("p", 300);
  
         },

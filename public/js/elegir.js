@@ -1,6 +1,6 @@
-function pasarVariables(pagina, valor) {
-  pagina +="?";
-  pagina += 'destino' + "=" + escape(valor);
-  pagina = pagina.substring(0,pagina.length);
-  location.href=pagina;
-}
+$(document).ready(function() {
+	debugger;
+	if (window.location.search) {
+		 $( ".tabla" ).show('slow');
+	}
+});

@@ -20,8 +20,8 @@ $(document).ready(function() {
 		geocoder.geocode({'latLng': latlng}, function (results, status) {
 		 	if (status == google.maps.GeocoderStatus.OK) {
 		 		if (results[0]) {
-		 			$('.lugar').text('Ahora estas en: '+results[0].formatted_address);
-		 			dir = results[0].formatted_address;
+		 			$('.lugar').text('Ahora estas en: '+results[1].formatted_address);
+		 			dir = results[1].formatted_address;
 		 		}
 		 		else {
 		 			alert('No se encontraron resultados');
