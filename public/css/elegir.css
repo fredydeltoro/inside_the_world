@@ -34,3 +34,78 @@
 .tabla ul li {
   display: block;
 }
+.chat .world {
+  position: absolute;
+  left: 15%;
+  top: 30%;
+}
+.chat .world img {
+  width: 40%;
+}
+.chat .world .contenido {
+  background: #35618c;
+  border-radius: 25px;
+  opacity: 0.95;
+  padding: 1em;
+  position: absolute;
+  top: -70px;
+  width: 400px;
+  height: 55px;
+}
+.chat .world .contenido:before {
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #35618c;
+  content: "";
+  position: absolute;
+  top: 80px;
+  left: 150px;
+}
+.chat .world .contenido h2 {
+  color: #fff;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.chat .world .contenido p {
+  color: #fff;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.chat .answers .nave {
+  height: 160px;
+  position: absolute;
+  top: 15%;
+  right: 30%;
+  transform: rotate(270deg);
+  width: 120px;
+}
+.chat .answers .respuesta {
+  border: 2px solid #e9e9e9;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px #82c0ff;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 5px 10px;
+  text-align: center;
+  position: absolute;
+  right: 23%;
+  top: 50%;
+  width: 25%;
+}
+.chat .answers .go {
+  background: #82c0ff;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  position: absolute;
+  padding: 8px 50px 8px 50px;
+  text-align: center;
+  right: 31%;
+  top: 65%;
+}
