@@ -13,7 +13,7 @@
 
             <ul>
               {% for lugares in data%}
-                <li>{{lugares.nombre}}</li>
+                <li> <a href=ruta?destino={{lugares.nombre}}>{{lugares.nombre}}</a></li>
               {% endfor %}
             </ul>
 
@@ -31,7 +31,7 @@
             </div>
 
             <div class="answers">
-            	<input class="respuesta" placeholder="¿A donde quieres ir?"  size="30">
+            	<input class="respuesta"   size="30">
                 <a hrerf='' class="go">Vamos</a>
                 <img src="imagenes/rocketship8.png" alt="nave" class="nave">
             </div>
