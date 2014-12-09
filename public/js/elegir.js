@@ -43,11 +43,18 @@ $(document).ready(function() {
 			$('.contenido p').text('Deseas combinar tu topico con algun pais? si, es así por favor escribe "semitropical y pais", si no quieres ningun pais escribe "semitropical y nada mas"');
 		}
 		else if(answer.split('y')[0] && answer.split('y')[1]){
-			debugger;
+			if (answer.split('y')[1]=='nada mas') {
+				$('.contenido p').text('Veamos que tenemos para ti');
+				$('.go').attr({
+				'href':'/elegir?query='+$.trim(answer.split('y')[0])
+			})
+		}
+			else{
 			$('.contenido p').text('Veamos que tenemos para ti');
 			$('.go').attr({
 				'href':'/elegir?query='+$.trim(answer.split('y')[0])+"_"+$.trim(answer.split('y')[1])
 			});
+		}
 		}
 		else{
 			$('.contenido p').text('Por ahora no entiendo mucho, trata con las opciones mencionadas');
