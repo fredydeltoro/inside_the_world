@@ -6,6 +6,7 @@
   "dependencies": {
     "express": "^3.4.0",
     "express-myconnection": "^1.0.4",
+    "express.io": "^1.1.12",
     "mysql": "^2.5.3",
     "swig": "^1.4.2"
   },

@@ -1,7 +1,7 @@
 var elegirController = function (server) {
 	var consulta;
 	server.get('/elegir', function (req, res) {
-		debugger;
+
 		if (req.param('query')!=null) {
 			if (req.param('query') =='no'){
 					consulta = 'SELECT nombre FROM lugturist';
@@ -38,8 +38,6 @@ var elegirController = function (server) {
 						consulta = 'SELECT lugturist.nombre'+
 									' FROM paises join lugturist on paises.id_pais=lugturist.id_pais '+ 
 									'WHERE lugturist.'+req.param('query').split('_')[0]+'=1 and paises.nombre= '+"'"+req.param('query').split('_')[1]+"'";
-
-									console.log(consulta);
 					}
 					
 				}
@@ -50,7 +48,12 @@ var elegirController = function (server) {
 					if (err) 
 						console.log('Error seleccionando : %s', err);
 
-					res.render('elegir', {data:rows});
+					server.io.route('listo!', function (req) {
+						req.io.emit('lista', rows);
+					});
+
+					res.render('elegir');
+					//server.io.broadcast('lista', rows);
 				});
 		});
 		}

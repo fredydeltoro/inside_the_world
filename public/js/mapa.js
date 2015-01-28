@@ -1,5 +1,11 @@
 $( document ).ready(function() {
   var queryString = new Array();
+
+  var destino;
+  var origen;
+  var adddestino;
+  var addorigen;
+
   if (queryString.length == 0) {
             if (window.location.search.split('?').length > 1) {
                 var params = window.location.search.split('?')[1].split('&');
@@ -11,15 +17,18 @@ $( document ).ready(function() {
             }
         }
         if (queryString["latdes"] != null &&queryString["londes"] != null &&queryString["latori"] != null && queryString["lonori"] != null) {
-           var destino = new google.maps.LatLng(queryString["latdes"], queryString["londes"]);
-           var origen = new google.maps.LatLng(queryString["latori"], queryString["lonori"]);
-           var adddestino = queryString["arrivo"];
-           var addorigen = queryString["partida"];
+            destino = new google.maps.LatLng(queryString["latdes"], queryString["londes"]);
+            origen = new google.maps.LatLng(queryString["latori"], queryString["lonori"]);
+            adddestino = queryString["arrivo"];
+            addorigen = queryString["partida"];
+        }
+        else{
+          origen = queryString["origen"];
+          destino = queryString["destino"];
         }
 
 var myOptions = {
     zoom: 15,
-    center: destino,
     mapTypeId: 'roadmap'
   };
 

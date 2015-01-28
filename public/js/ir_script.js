@@ -35,11 +35,12 @@ $(document).ready(function() {
 	};
 
 	$('a').on('click', function() {
+		debugger;
 		$('a').attr({
 		   'href': '/ruta?'+'partida='+encodeURIComponent($('#origen').val())+
-		   '&latori='+encodeURIComponent(place_origen.geometry.location.k)+'&lonori='+encodeURIComponent(place_origen.geometry.location.B)
+		   '&latori='+encodeURIComponent(place_origen.geometry.location.k)+'&lonori='+encodeURIComponent(place_origen.geometry.location.D)
 		   +'&arrivo='+encodeURIComponent($('#destino').val())+
-		   '&latdes='+encodeURIComponent(place_destino.geometry.location.k)+'&londes='+encodeURIComponent(place_destino.geometry.location.B)
+		   '&latdes='+encodeURIComponent(place_destino.geometry.location.k)+'&londes='+encodeURIComponent(place_destino.geometry.location.D)
 		})
 	});
 
@@ -51,7 +52,6 @@ function autocomplete() {
 		var auto_origen = new google.maps.places.Autocomplete(inp_origen);
 
 		google.maps.event.addListener(auto_origen, 'place_changed', function() {
-			debugger;
 			place_origen = auto_origen.getPlace();
 			if (!place_origen.geometry) {
 				return;
@@ -63,7 +63,6 @@ function autocomplete() {
 		var auto_destino = new google.maps.places.Autocomplete(inp_destino);
 
 		google.maps.event.addListener(auto_destino, 'place_changed', function() {
-			debugger;
 			place_destino = auto_destino.getPlace();
 			if (!place_origen.geometry) {
 				return;

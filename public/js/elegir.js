@@ -1,10 +1,66 @@
 $(document).ready(function() {
-	var answer;
-	if (window.location.search) {
-		 $( ".tabla" ).fadeIn('slow');
-		 $('.chat').hide('slow');
+	var dir;
+
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(positionSuccess);
+	} else {
+		error('not supported');
 	}
 
+	function positionSuccess(position) {
+
+		geocoder = new google.maps.Geocoder();
+
+		lat = position.coords.latitude;
+		lng = position.coords.longitude;
+		var latlng = new google.maps.LatLng(lat,lng);
+
+		geocoder.geocode({'latLng': latlng}, function (results, status) {
+		 	if (status == google.maps.GeocoderStatus.OK) {
+		 		if (results[0]) {
+		 			dir = results[1].formatted_address;
+		 		}
+		 		else {
+		 			alert('No se encontraron resultados');
+		 		}
+		 	}
+		 	else {
+		 		alert('fallo por: ' + status);
+		 	}
+		 });
+			
+	};
+
+	if (window.location.search) {
+		var lugares ;
+		$('.chat').hide('slow');
+		$( ".tabla" ).fadeIn('slow',function() {
+			window.io = io.connect();
+			io.on('connect', function(socket) {
+				io.emit('listo!');
+			});
+
+			io.on('lista', function (lista) {
+			lugares = lista;
+			$.each(lugares, function (row, data) {
+				$('ul').append(
+						' <li>'+ '<a href=ruta?origen='+encodeURI(dir)+'&destino='+encodeURI(data.nombre)+'>'+data.nombre+'</a></li>'
+					)
+			});
+		});
+	});	
+	}
+
+	else{
+		respuesta();
+	}
+	
+
+
+});
+
+function respuesta() {
+	var answer;
 	$('.go').on('click', function() {
 		answer = $('.respuesta').val();
 		$('.respuesta').val('');
@@ -42,23 +98,25 @@ $(document).ready(function() {
 		else if(answer == 'semitropical'){
 			$('.contenido p').text('Deseas combinar tu topico con algun pais? si, es así por favor escribe "semitropical y pais", si no quieres ningun pais escribe "semitropical y nada mas"');
 		}
-		else if(answer.split('y')[0] && answer.split('y')[1]){
-			if (answer.split('y')[1]=='nada mas') {
+		else if(answer.split(' ')[0] && answer.split(' ')[1]){
+			if (answer.split(' ')[2]=='nada') {
+				debugger;
 				$('.contenido p').text('Veamos que tenemos para ti');
 				$('.go').attr({
-				'href':'/elegir?query='+$.trim(answer.split('y')[0])
-			})
+						'href':'/elegir?query='+$.trim(answer.split(' ')[0])
+						})
 		}
 			else{
+
 			$('.contenido p').text('Veamos que tenemos para ti');
 			$('.go').attr({
-				'href':'/elegir?query='+$.trim(answer.split('y')[0])+"_"+$.trim(answer.split('y')[1])
-			});
+						'href':'/elegir?query='+$.trim(answer.split(' ')[0])+"_"+$.trim(answer.split(' ')[2])
+					});
 		}
 		}
 		else{
 			$('.contenido p').text('Por ahora no entiendo mucho, trata con las opciones mencionadas');
 		}
 	}
+};
 
-});

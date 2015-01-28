@@ -21,23 +21,39 @@ vendor-prefixes ?= moz webkit o ms official
         font-size 35px
         font-weight 800
         text-align center 
-        
-    ul 
-        border-radius 5px
+    .contenedor 
         background white
-        color #555
-        font-size 18px
-        text-align center
+        border-radius 10px
         height 200px
+        position relative
+        width 300px 
         line-height 30px
-        margin 0
-        padding 0
-        overflow-y auto
+        overflow-y hidden
+        overflow-x hidden
         white-space nowrap
-        width 300px
-        
-        li
-            display block
+          
+        ul 
+            background white
+            text-align left
+            height 300px
+            line-height 30px
+            margin 0
+            padding 0
+            overflow-y auto
+            white-space nowrap
+            width 380px
+              
+            li 
+                display block 
+                a 
+                    text-decoration none 
+                    color #555
+                    font-size 22px
+                    margin 0
+                    padding 0.4em 12em 0.4em 1.5em
+                    &:hover
+                        background #f6f6f6
+                        color #07c4f3
             
 .chat
     .world

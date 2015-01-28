@@ -15,11 +15,19 @@ $(document).ready(function(){
         if (queryString["latdes"] != null &&queryString["londes"] != null &&queryString["latori"] != null && queryString["lonori"] != null) {
            var topic = queryString["arrivo"];
            if (topic.split(',').length > 1) {
-            debugger;
             var destino = encodeURIComponent(topic.split(',')[0]);
            }
            else{
             var destino = encodeURIComponent(queryString["arrivo"]);
+           }
+        }
+        else{
+            var topic = queryString["destino"];
+           if (topic.split(',').length > 1) {
+            var destino = encodeURIComponent(topic.split(',')[0]);
+           }
+           else{
+            var destino = encodeURIComponent(queryString["destino"]);
            }
         }
 

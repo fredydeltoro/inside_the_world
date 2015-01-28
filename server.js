@@ -1,7 +1,8 @@
-var express = require('express')
+var express = require('express.io'),
 	swig = require('swig');
 
 var server = express();
+server.http().io();
 var connection = require('express-myconnection');
 var mysql = require('mysql');
 
